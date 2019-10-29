@@ -1,0 +1,13 @@
+.text-output{
+    background-color:peachpuff;
+    height: 20rem;
+    overflow: auto;
+}
+
+.inputHolder{
+    background: aqua;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+
+}

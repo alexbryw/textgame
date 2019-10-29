@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="main.js"></script>
+    <script defer src="main.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Text Game</title>
 </head>
 <body>
-    <input type="text" name="intext" id="inTextId">
-    <div id="text-output">
-        <h3>old</h3>
+    <div class="text-output">
     </div>
-    <button onclick="getTextButton()">Enter</button>
+    <div class="inputHolder">
+        <div class="text-input">
+            <input type="text" name="intext" id="inTextId">
+        </div>
+        <div class="button-Enter">
+            <button onclick="getTextButton()">Enter</button>
+        </div>
+    </div>
 </body>
 </html>
