@@ -44,18 +44,19 @@ function goToRoom(roomNumberInput){
 
 const rooms = [
     {
-        roomNumber: 0,
         roomText: 'You did not make it.\nGame Over.',
         doorsToRooms: []
     },
     {
-        roomNumber: 1,
         roomText: 'room 1 text,\npress 1 for teal door or 2 for purple door',
         doorsToRooms: [0,2]
     },
     {
-        roomNumber: 2,
         roomText: 'room 2 text,\npress1 press 2',
+        doorsToRooms: [0,1,3]
+    },
+    {
+        roomText: 'room 3 text,\npress1 press 2',
         doorsToRooms: [0,1]
     }
 ]

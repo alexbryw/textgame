@@ -5,21 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script defer src="main.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Text Game</title>
 </head>
 <body>
-    <div class="text-output">
-    </div>
-    <div class="inputHolder">
-        <div class="text-input">
-            <input type="text" name="intext" id="inTextId">
+    <div class="container">
+        <h1>The Apocalypse Game</h1>
+        <div class="text-output">
         </div>
-        <div class="button-Enter">
-            <button onclick="getTextButton()">Enter</button>
-        </div>
-        <div class="button-Restart">
-            <button onclick="startGame()">Restart</button>
+        <div class="inputHolder">
+            <div class="inputHolder-left">
+                <div class="text-input">
+                    <input type="text" name="inText" id="inTextId">
+                </div>
+                <div class="button-Enter">
+                    <button onclick="getTextButton()">Enter</button>
+                </div>                
+            </div>
+            <div class="inputHolder-right">
+                <div class="spacer">
+                </div>
+                <div class="button-Restart">
+                    <button onclick="startGame()">Restart</button>
+                </div>                
+            </div>
         </div>
     </div>
 </body>

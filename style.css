@@ -1,13 +1,71 @@
+*{
+    margin: 0;
+    font-family: 'roboto', sans-serif;
+}
+body, html{
+    height: 100%;
+}
+body{
+    background-image: url(./img/apocalypse-2570868_1920.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    display: flex;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    max-width: 45rem;
+}
+
+.container h1{
+    color: maroon;
+}
 .text-output{
-    background-color:peachpuff;
+    background-color: grey;
     height: 20rem;
     overflow: auto;
+    width: 20rem;
+}
+.spacer{
+    width: 1rem;
+}
+
+input{
+    background-color: lightcyan;
 }
 
 .inputHolder{
-    background: aqua;
-    position: fixed;
-    bottom: 0;
+    background: grey;
+    /*position: fixed;*/
+    /*bottom: 0;*/
     display: flex;
+    justify-content: space-between;
+    width: 20rem;
+}
 
+.inputHolder-left{
+    display: flex;
+}
+.inputHolder-right{
+    display: flex;
+}
+
+/*720px*/
+@media(min-width: 45em){
+    .inputHolder{
+        width: 45rem;
+    }
+
+    .text-output{
+        background-color: grey;
+        height: 20rem;
+        overflow: auto;
+        margin-top: 4rem;
+        width: 45rem;
+    }
 }
