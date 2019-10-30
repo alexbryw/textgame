@@ -1,3 +1,7 @@
+/**
+ * Keeps track of current room position.
+ * @type {number}
+ */
 let currentRoom = 0;
 
 
@@ -8,25 +12,44 @@ function startGame(){
 }
 
 function getTextButton(){
-    let intext = document.getElementById('inTextId').value;
-    console.log(intext);
-    addTextToOutput(intext);
-    goToRoom(intext)
+    let inText = document.getElementById('inTextId').value;
+    console.log(inText);
+    addTextToOutput(inText);
+    goToRoom(inText)
 }
 
-function addTextToOutput(intext){
-    let oldtext = document.querySelector('.text-output').innerHTML;
-    let newText = '<h3>'+intext+'</h3>' + oldtext;
+/**
+ * Add new text to html .text-output div.
+ * @param {string} inText 
+ */
+function addTextToOutput(inText){
+    let oldText = document.querySelector('.text-output').innerHTML;
+    let newText = '<h3>'+inText+'</h3>' + oldText;
     document.querySelector('.text-output').innerHTML = newText;
 }
 
 function goToRoom(roomNumberInput){
+
+    if(rooms[currentRoom].doorsToRooms[roomNumberInput] != null){
+        currentRoom = roomNumberInput;
+        addTextToOutput(rooms[currentRoom].roomText);
+    }
+    else{
+        addTextToOutput('That is not possible, try agin.');
+    }
+    /*
     let roomNotFound = true;
-    for(let possibleRoomNumber in rooms[currentRoom].possibleRooms){
-        if(roomNumberInput === possibleRoomNumber){
-            addTextToOutput('room found!');
-            addTextToOutput(rooms[roomNumberInput-1].roomText); //TODO fix negative number.
-            currentRoom = roomNumberInput-1;
+    //console.log('current room top' +  currentRoom);
+
+    for(let doorToRoom of rooms[currentRoom].doorsToRooms){
+        //console.log('looking for room1.')
+        if(roomNumberInput == doorToRoom && roomNumberInput > 0){
+            //console.log('looking for room.')
+            //addTextToOutput('room found!');
+            //addTextToOutput(rooms[roomNumberInput-1].roomText); //TODO fix negative number.
+            currentRoom = rooms[currentRoom].doorsToRooms[roomNumberInput-1];
+            addTextToOutput(rooms[currentRoom].roomText);
+            console.log('current room after' +  currentRoom);
             roomNotFound = false;
             break;
         }
@@ -34,25 +57,25 @@ function goToRoom(roomNumberInput){
     if(roomNotFound === true){
         addTextToOutput('That is not possible, try agin.');
     }
-    
+    */
     
 }
 
 const rooms = [
     {
         roomNumber: 0,
-        roomText: 'room 1 text, press 1 for red door or 2 for green door',
-        possibleRooms: [2,3]
+        roomText: 'room 0 text, press 1 for red door or 2 for green door',
+        doorsToRooms: [1,2]
     },
     {
         roomNumber: 1,
-        roomText: 'room 2 text,\npress 1 for teel door or 2 for purple door',
-        possibleRooms: [1,3]
+        roomText: 'room 1 text,\npress 1 for teel door or 2 for purple door',
+        doorsToRooms: [0,2]
     },
     {
         roomNumber: 2,
-        roomText: 'room 3 text,\npress1 press 2',
-        possibleRooms: [1,2]
+        roomText: 'room 2 text,\npress1 press 2',
+        doorsToRooms: [0,1]
     }
 ]
 
