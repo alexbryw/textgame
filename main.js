@@ -2,11 +2,11 @@
  * Keeps track of current room position.
  * @type {number}
  */
-let currentRoom = 0;
+let currentRoom = 1;
 
 
 function startGame(){
-    currentRoom = 0;
+    currentRoom = 1;
     document.querySelector('.text-output').innerHTML = '';
     addTextToOutput(rooms[currentRoom].roomText);
 }
@@ -14,6 +14,7 @@ function startGame(){
 function getTextButton(){
     let inText = document.getElementById('inTextId').value;
     console.log(inText);
+    document.getElementById('inTextId').value = '';
     addTextToOutput(inText);
     goToRoom(inText)
 }
@@ -31,45 +32,25 @@ function addTextToOutput(inText){
 function goToRoom(roomNumberInput){
 
     if(rooms[currentRoom].doorsToRooms[roomNumberInput] != null){
-        currentRoom = roomNumberInput;
+        currentRoom = rooms[currentRoom].doorsToRooms[roomNumberInput];
+        console.log('current room ' + currentRoom)
         addTextToOutput(rooms[currentRoom].roomText);
     }
     else{
-        addTextToOutput('That is not possible, try agin.');
+        addTextToOutput('That is not possible, try again.');
     }
-    /*
-    let roomNotFound = true;
-    //console.log('current room top' +  currentRoom);
-
-    for(let doorToRoom of rooms[currentRoom].doorsToRooms){
-        //console.log('looking for room1.')
-        if(roomNumberInput == doorToRoom && roomNumberInput > 0){
-            //console.log('looking for room.')
-            //addTextToOutput('room found!');
-            //addTextToOutput(rooms[roomNumberInput-1].roomText); //TODO fix negative number.
-            currentRoom = rooms[currentRoom].doorsToRooms[roomNumberInput-1];
-            addTextToOutput(rooms[currentRoom].roomText);
-            console.log('current room after' +  currentRoom);
-            roomNotFound = false;
-            break;
-        }
-    }
-    if(roomNotFound === true){
-        addTextToOutput('That is not possible, try agin.');
-    }
-    */
     
 }
 
 const rooms = [
     {
         roomNumber: 0,
-        roomText: 'room 0 text, press 1 for red door or 2 for green door',
-        doorsToRooms: [1,2]
+        roomText: 'You did not make it.\nGame Over.',
+        doorsToRooms: []
     },
     {
         roomNumber: 1,
-        roomText: 'room 1 text,\npress 1 for teel door or 2 for purple door',
+        roomText: 'room 1 text,\npress 1 for teal door or 2 for purple door',
         doorsToRooms: [0,2]
     },
     {
