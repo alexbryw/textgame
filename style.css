@@ -2,9 +2,12 @@
     margin: 0;
     font-family: 'roboto', sans-serif;
 }
+/*set body and html to cover 100% so background-image can cover 100%.*/
 body, html{
     height: 100%;
 }
+
+/*Background image set to fullscreen.*/
 body{
     background-image: url(./img/apocalypse-2570868_1920.jpg);
     background-repeat: no-repeat;
@@ -13,6 +16,8 @@ body{
     height: 100%;
     display: flex;
 }
+
+/*set container for output and input to column.*/
 .container{
     display: flex;
     flex-direction: column;
@@ -22,23 +27,30 @@ body{
     max-width: 45rem;
 }
 
+/*Game name color.*/
 .container h1{
     color: maroon;
 }
+
+/*Text-output div background color and size*/
 .text-output{
     background-color: grey;
     height: 20rem;
     overflow: auto;
     width: 20rem;
 }
+
+/*Spacer between Enter and Reset button to stop accidental reset.*/
 .spacer{
     width: 1rem;
 }
 
+/*Input text background-color.*/
 input{
     background-color: lightcyan;
 }
 
+/*Below are holders for flex separation of buttons and input.*/
 .inputHolder{
     background: grey;
     /*position: fixed;*/
@@ -55,17 +67,14 @@ input{
     display: flex;
 }
 
-/*720px*/
+/*720px or 45em for larger displays*/
 @media(min-width: 45em){
+    /*Wider output and input size.*/
     .inputHolder{
         width: 45rem;
     }
 
     .text-output{
-        background-color: grey;
-        height: 20rem;
-        overflow: auto;
-        margin-top: 4rem;
         width: 45rem;
     }
 }
