@@ -1,15 +1,18 @@
-/**
- * Keeps track of current room position.
- * @type {number}
- */
+
+/** Keeps track of current room position.
+ * @type {number}*/
 let currentRoom = 1;
+
+/**@type {boolean}*/
+let gameOver = false;
 
 /**
  * Is run at start and on reset.
- * Clears text-output and sets currentRoom to 1.
+ * Clears text-output and sets currentRoom to 1 and gameOver to false.
  */
 function startGame(){
     currentRoom = 1;
+    gameOver = false;
     document.querySelector('.text-output').innerHTML = '';
     addTextToOutput(rooms[currentRoom].roomText);
 }
@@ -19,14 +22,14 @@ function startGame(){
  * Clears input field for next input.
  */
 function getTextButton(){
-    //get input from html input inTextId.
-    let inText = document.getElementById('inTextId').value;
-    //Empty input from previous input. 
-    document.getElementById('inTextId').value = '';
-    //Display input.
-    addTextToOutput('<br>'+inText);
-    //Send input to goToRoom.
-    goToRoom(inText)
+    let inText = document.getElementById('inTextId').value; //get input from html input inTextId.
+    document.getElementById('inTextId').value = ''; //Empty input from previous input.
+    
+    if(gameOver === false){      //lock input if game is over.
+        addTextToOutput('<br>'+inText); //Display input.
+        goToRoom(inText) //Send input to goToRoom.  
+    }
+
 }
 
 /**
@@ -46,15 +49,25 @@ function addTextToOutput(inText){
  * @param {(string|number)} roomNumberInput 
  */
 function goToRoom(roomNumberInput){
-    //If roomNumberInput is not null(empty) then set that room as currentRoom.
+    //If doorsToRooms array element is not null(empty) then set that room as currentRoom
+    //and display text from the new currentRoom.
     if(rooms[currentRoom].doorsToRooms[roomNumberInput] != null){
         currentRoom = rooms[currentRoom].doorsToRooms[roomNumberInput];
         console.log('current room ' + currentRoom)
         addTextToOutput(rooms[currentRoom].roomText);
+        isGameOver();
     }
     //error text if user inputs the wrong value.
     else{
         addTextToOutput('That is not possible, try again.');
+    }
+}
+/**
+ * Tests if player has won or died and sets gameOver to true, and lock further input.
+ */
+function isGameOver(){
+    if(currentRoom == 0||currentRoom == 6||currentRoom == 7){
+        gameOver = true;
     }
 }
 
@@ -71,7 +84,7 @@ const rooms = [
     },
     {   //1 start.
         roomText:
-        'The world has ended, everything is on fire. You see a door.<br>Enter 0 to run away.<br>Enter 1 to enter building.',
+        'The world has ended, everything is on fire. You see a door.<br>Enter 0 to keep running.<br>Enter 1 to enter building.',
         doorsToRooms: [0,2]
     },
     {   //2 enter first room , ladder down or next door.
@@ -86,7 +99,7 @@ const rooms = [
     },
     {   //4 next door or return.
         roomText:
-        'You open the door and see a metal object on the floor and a locked door.<br>Enter 0 to go back.<br>Enter 1 to pick up metal object.',
+        'You open the door and see a metal object on the floor and a locked door.<br>Enter 0 to go back.<br>Enter 1 to pick up the metal object.',
         doorsToRooms: [2,5]
     },
     {   //5 explosive pickup.
@@ -96,7 +109,7 @@ const rooms = [
     },
     {   //6 radiation dead.
         roomText:
-        'You see a green glowing goo on the ground, you feel to weak too walk, its radioactive. You died. Game Over.',
+        'You see green glowing goo on the ground, you feel to weak too walk, its radioactive. You died. Game Over.',
         doorsToRooms: []
     },
     {   //7 blow up door Freedom win.

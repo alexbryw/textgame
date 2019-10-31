@@ -72,6 +72,10 @@ button, input{
     border: none;
 }
 
+button{
+    background-color: peru;
+}
+
 /*720px or 45em for larger displays*/
 @media(min-width: 45em){
     /*Wider output and input size.*/
