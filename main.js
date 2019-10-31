@@ -6,7 +6,7 @@ let currentRoom = 1;
 
 /**
  * Is run at start and on reset.
- * Clears text-output and sets currentRoom to start 1.
+ * Clears text-output and sets currentRoom to 1.
  */
 function startGame(){
     currentRoom = 1;
@@ -43,7 +43,7 @@ function addTextToOutput(inText){
  * Check if input is a valid room number in doorsToRooms array.
  * Sets currentRoom to new value from selected doorsToRooms array index.
  * Sends text from new room to addTextToOutput function.
- * @param {string|number} roomNumberInput 
+ * @param {(string|number)} roomNumberInput 
  */
 function goToRoom(roomNumberInput){
     //If roomNumberInput is not null(empty) then set that room as currentRoom.
@@ -61,7 +61,7 @@ function goToRoom(roomNumberInput){
 /**
  * Array of room objects containing roomText string
  * and array of available doors to enter.
- * @type {Array[object]}
+ * @type {Array}
  */
 const rooms = [
     {   //0 You died.

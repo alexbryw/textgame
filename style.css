@@ -67,6 +67,11 @@ input{
     display: flex;
 }
 
+/*remove border from buttons and input.*/
+button, input{
+    border: none;
+}
+
 /*720px or 45em for larger displays*/
 @media(min-width: 45em){
     /*Wider output and input size.*/
