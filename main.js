@@ -18,22 +18,21 @@ function startGame(){
 }
 
 /**
- * Is run when user presses Enter button andSends input to goToRoom function.
+ * Is run when the user presses Enter button and Sends input to goToRoom function.
  * Clears input field for next input.
  */
 function getTextButton(){
-    let inText = document.getElementById('inTextId').value; //get input from html input inTextId.
+    let inText = document.getElementById('inTextId').value; //Get input from html input inTextId.
     document.getElementById('inTextId').value = ''; //Empty input from previous input.
     
     if(gameOver === false){      //lock input if game is over.
         addTextToOutput('<br>'+inText); //Display input.
         goToRoom(inText) //Send input to goToRoom.  
     }
-
 }
 
 /**
- * Add new text to html .text-output div.
+ * Add new text to html .text-output div on top of old text.
  * @param {string} inText
  */
 function addTextToOutput(inText){
@@ -43,21 +42,21 @@ function addTextToOutput(inText){
 }
 
 /**
- * Check if input is a valid room number in doorsToRooms array.
- * Sets currentRoom to new value from selected doorsToRooms array index.
+ * Check if userInput is the same as any actionText in doorOptions array.
+ * Sets currentRoom to nextRoom from selected doorOptions object.
  * Sends text from new room to addTextToOutput function.
- * @param {(string|number)} roomNumberInput 
+ * @param {string} userInput
  */
-function goToRoom(roomNumberInput){
+function goToRoom(userInput){
 
-    let doorOpened = false
-    for (const door of rooms[currentRoom].doorsToRooms) {
-        //If roomNumberInput is not null(empty) then set that room as currentRoom.
-        if(door.text == roomNumberInput){
+    let doorOpened = false;
+    for (const door of rooms[currentRoom].doorOptions) {
+        //If userInput is the same as actionText then set nextRoom as currentRoom.
+        if(door.actionText == userInput){
             currentRoom = door.nextRoom;
-            console.log('current room ' + currentRoom)
+            console.log('current room ' + currentRoom);
             addTextToOutput(rooms[currentRoom].roomText);
-            doorOpened = true
+            doorOpened = true;
             isGameOver();
         }
 
@@ -68,7 +67,7 @@ function goToRoom(roomNumberInput){
     }
 }
 /**
- * Tests if player has won or died and sets gameOver to true, and lock further input.
+ * Sets gameOver to true if player reaches win or lose rooms.
  */
 function isGameOver(){
     if(currentRoom == 0||currentRoom == 6||currentRoom == 7){
@@ -76,64 +75,101 @@ function isGameOver(){
     }
 }
 
-/**
- * 
+/*
+ *@typedef  {{ roomText: String, doorsToRooms: Array<Number>}} Room
  */
 
-/**
+/*
  * Array of room objects containing roomText string
- * and array of available doors to enter.
- * @type {Array<>}
+ * and an array of available doorOptions to enter whit actionText string and nextRoom number.
+ * @type {Array<Room>}
  */
+
+ /**
+  * @typedef {roomText: String}
+  */
 const rooms = [
     {   //0 You died.
         roomText:
         'You did not make it, you are dead. Game Over.',
-        doorsToRooms: []
     },
     {   //1 start.
         roomText:
-        'The world has ended, everything is on fire. You see a door. Do you want to <b>run away</b> or <b>enter building</b>.',
-        doorsToRooms: [
+        'The world has ended, everything is on fire. You see a door. Do you want to <b>keep running</b> or <b>enter building</b>.',
+        doorOptions: [
             {
-                text: "run away",
+                actionText: "keep running",
                 nextRoom: 0 
             },
             {
-                text: "enter building",
+                actionText: "enter building",
                 nextRoom: 2 
             }
         ]
     },
     {   //2 enter first room , ladder down or next door.
         roomText:
-        'You enter the building and the walls fall in and block the way back. You see a ladder leading down, and another door.<br>Enter 0 to climb down the ladder.<br>Enter 1 to open the next door.',
-        doorsToRooms: [3,4]
+        'You enter the building and the walls fall in and block the way back. You see a ladder leading down, and another door.<br>Climb down the <b>ladder</b> or open the next <b>door</b>.',
+        doorOptions: [
+            {
+                actionText: "ladder",
+                nextRoom: 3 
+            },
+            {
+                actionText: "door",
+                nextRoom: 4 
+            }
+        ]
     },
     {   //3 down the ladder , keep going or return.
         roomText:
-        'You climb down and you see a dead body, you feel sick.<br>Enter 0 to go back up.<br>Enter 1 to keep going.',
-        doorsToRooms: [2,6]
+        'You climb down and you see a dead body, you feel sick. Do you <b>go back up</b> or <b>keep going</b>.',
+        doorOptions: [
+            {
+                actionText: "go back up",
+                nextRoom: 2 
+            },
+            {
+                actionText: "keep going",
+                nextRoom: 6 
+            }
+        ]
     },
     {   //4 next door or return.
         roomText:
-        'You open the door and see a metal object on the floor and a locked door.<br>Enter 0 to go back.<br>Enter 1 to pick up the metal object.',
-        doorsToRooms: [2,5]
+        'You open the door and see a metal object on the floor and a blocked door. Do you <b>go back</b> or <b>pick up</b> the metal object.',
+        doorOptions: [
+            {
+                actionText: "go back",
+                nextRoom: 2 
+            },
+            {
+                actionText: "pick up",
+                nextRoom: 5 
+            }
+        ]
     },
     {   //5 explosive pickup.
         roomText:
-        'You pick up the object and you hear a spring move, you have picked up an explosive device and its about to blow.<br>Enter 0 to throw the device at the locked door.<br>Enter 1 to try and disarm the explosive.',
-        doorsToRooms: [7,0]
+        'You pick up the object and you hear a spring move, you have picked up an explosive device and its about to blow. Do you <b>throw</b> the device at the blocked door. Or try to <b>disarm</b> it.',
+        doorOptions: [
+            {
+                actionText: "throw",
+                nextRoom: 7 
+            },
+            {
+                actionText: "disarm",
+                nextRoom: 0 
+            }
+        ]
     },
     {   //6 radiation dead.
         roomText:
         'You see green glowing goo on the ground, you feel to weak too walk, its radioactive. You died. Game Over.',
-        doorsToRooms: []
     },
     {   //7 blow up door Freedom win.
         roomText:
-        'The explosive blows the door open, you see light coming trough the dust, you have found safe space in The Apocalypse. You Win! Game Over.',
-        doorsToRooms: []
+        'The explosives blow the door open, you see light coming trough the dust, you have found safe place in The Apocalypse. You Win! Game Over.',
     }
 ]
 

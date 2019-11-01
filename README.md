@@ -4,9 +4,10 @@ The Apocalypse Game.
 
 A text based computer adventure in html css and javascript.
 
-The player reads the instructions and enters a number.
-The number is sent to a function that looks for available paths from the current room,
+The player enters text to move around in the game world.
+The text is sent to a function that looks for available paths from the current room,
 and displays text from the next room that was chosen.
-Alexander Fed19G.
+
+Alexander B.
 
 https://github.com/alexbryw/textgame
