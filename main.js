@@ -46,22 +46,32 @@ function addTextToOutput(inText){
  * @param {(string|number)} roomNumberInput 
  */
 function goToRoom(roomNumberInput){
-    //If roomNumberInput is not null(empty) then set that room as currentRoom.
-    if(rooms[currentRoom].doorsToRooms[roomNumberInput] != null){
-        currentRoom = rooms[currentRoom].doorsToRooms[roomNumberInput];
-        console.log('current room ' + currentRoom)
-        addTextToOutput(rooms[currentRoom].roomText);
+
+    let doorOpened = false
+    for (const door of rooms[currentRoom].doorsToRooms) {
+        //If roomNumberInput is not null(empty) then set that room as currentRoom.
+        if(door.text == roomNumberInput){
+            currentRoom = door.nextRoom;
+            console.log('current room ' + currentRoom)
+            addTextToOutput(rooms[currentRoom].roomText);
+            doorOpened = true
+        }
+
     }
     //error text if user inputs the wrong value.
-    else{
+    if (!doorOpened) {
         addTextToOutput('That is not possible, try again.');
     }
 }
 
 /**
+ * 
+ */
+
+/**
  * Array of room objects containing roomText string
  * and array of available doors to enter.
- * @type {Array}
+ * @type {Array<>}
  */
 const rooms = [
     {   //0 You died.
@@ -71,8 +81,17 @@ const rooms = [
     },
     {   //1 start.
         roomText:
-        'The world has ended, everything is on fire. You see a door.<br>Enter 0 to run away.<br>Enter 1 to enter building.',
-        doorsToRooms: [0,2]
+        'The world has ended, everything is on fire. You see a door. Do you want to <b>run away</b> or <b>enter building</b>.',
+        doorsToRooms: [
+            {
+                text: "run away",
+                nextRoom: 0 
+            },
+            {
+                text: "enter building",
+                nextRoom: 2 
+            }
+        ]
     },
     {   //2 enter first room , ladder down or next door.
         roomText:
