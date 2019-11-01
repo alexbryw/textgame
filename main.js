@@ -49,7 +49,6 @@ function addTextToOutput(inText){
  * @param {(string|number)} roomNumberInput 
  */
 function goToRoom(roomNumberInput){
-<<<<<<< HEAD
 
     let doorOpened = false
     for (const door of rooms[currentRoom].doorsToRooms) {
@@ -61,15 +60,6 @@ function goToRoom(roomNumberInput){
             doorOpened = true
         }
 
-=======
-    //If doorsToRooms array element is not null(empty) then set that room as currentRoom
-    //and display text from the new currentRoom.
-    if(rooms[currentRoom].doorsToRooms[roomNumberInput] != null){
-        currentRoom = rooms[currentRoom].doorsToRooms[roomNumberInput];
-        console.log('current room ' + currentRoom)
-        addTextToOutput(rooms[currentRoom].roomText);
-        isGameOver();
->>>>>>> bcc0b39a077b4070b74ef13c7772cf1bda45eacd
     }
     //error text if user inputs the wrong value.
     if (!doorOpened) {
@@ -102,7 +92,6 @@ const rooms = [
     },
     {   //1 start.
         roomText:
-<<<<<<< HEAD
         'The world has ended, everything is on fire. You see a door. Do you want to <b>run away</b> or <b>enter building</b>.',
         doorsToRooms: [
             {
@@ -114,10 +103,6 @@ const rooms = [
                 nextRoom: 2 
             }
         ]
-=======
-        'The world has ended, everything is on fire. You see a door.<br>Enter 0 to keep running.<br>Enter 1 to enter building.',
-        doorsToRooms: [0,2]
->>>>>>> bcc0b39a077b4070b74ef13c7772cf1bda45eacd
     },
     {   //2 enter first room , ladder down or next door.
         roomText:
