@@ -58,6 +58,7 @@ function goToRoom(roomNumberInput){
             console.log('current room ' + currentRoom)
             addTextToOutput(rooms[currentRoom].roomText);
             doorOpened = true
+            isGameOver();
         }
 
     }
