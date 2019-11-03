@@ -10,26 +10,28 @@
     <title>The Apocalypse Game</title>
 </head>
 <body>
-    <div class="container">
-        <h1>The Apocalypse Game</h1>
-        <div class="text-output">
-        </div>
-        <div class="inputHolder">
-            <div class="inputHolder-left">
-                <div class="spacer">
-                </div>
-                <div class="text-input">
-                    <input type="text" name="inText" id="inTextId">
-                </div>
-                <div class="button-Enter">
-                    <button onclick="getTextButton()">Enter</button>
-                </div>                
+    <div class="outside-container">
+        <div class="container">
+            <h2>The Apocalypse Game</h2>
+            <div class="text-output">
             </div>
-            <div class="inputHolder-right">
+            <div class="inputHolder">
+                <div class="inputHolder-left">
+                    <div class="spacer">
+                    </div>
+                    <div class="text-input">
+                        <input type="text" name="inText" id="inTextId">
+                    </div>
+                    <div class="button-Enter">
+                        <button id="button-input" onclick="getTextButton()">Enter</button>
+                    </div>                
+                </div>
+                <div class="inputHolder-right">
 
-                <div class="button-Restart">
-                    <button onclick="startGame()">Restart</button>
-                </div>                
+                    <div class="button-Restart">
+                        <button onclick="startGame()">Restart</button>
+                    </div>                
+                </div>
             </div>
         </div>
     </div>

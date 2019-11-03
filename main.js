@@ -6,6 +6,16 @@ let currentRoom = 1;
 /**@type {boolean}*/
 let gameOver = false;
 
+//Listens for Enter key press and triggers the enter button.
+const inputTextElement = document.getElementById('inTextId');
+inputTextElement.addEventListener('keyup', function(event){
+    if(event.keyCode === 13){
+        event.preventDefault();
+        document.getElementById('button-input').click();
+    }
+})
+
+
 /**
  * Is run at start and on reset.
  * Clears text-output and sets currentRoom to 1 and gameOver to false.

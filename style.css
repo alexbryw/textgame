@@ -15,34 +15,39 @@ body{
     background-size: cover;
     height: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/*set container for output and input to column.*/
+/*Extra space around inner container and rounded corners.*/
+.outside-container{
+    width: 20rem;
+    height: 24.6rem;
+    background-color: lightsteelblue;
+    border-radius: 1rem;
+}
+
+/*Set container for output and input to column.*/
 .container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: auto;
-    max-width: 45rem;
 }
 
 /*Game name color.*/
-.container h1{
+.container h2{
     color: maroon;
+    margin: 0.5rem 0;
 }
 
 /*Text-output div background color and size*/
 .text-output{
-    background-color: grey;
+    background-color: lightsteelblue;
     height: 20rem;
     overflow: auto;
-    width: 20rem;
-}
-
-/*Spacer between left side and input.*/
-.spacer{
-    width: 0.5rem;
+    width: 18rem;
 }
 
 /*Input text background-color.*/
@@ -52,19 +57,21 @@ input{
 
 /*Below are holders for flex separation of buttons and input.*/
 .inputHolder{
-    background: grey;
+    background: lightsteelblue;
     /*position: fixed;*/
     /*bottom: 0;*/
     display: flex;
     justify-content: space-between;
-    width: 20rem;
+    width: 18rem;
 }
 
 .inputHolder-left{
     display: flex;
+    margin: 0.24rem;
 }
 .inputHolder-right{
     display: flex;
+    margin: 0.24rem;
 }
 
 /*remove border from buttons and input.*/
@@ -80,10 +87,14 @@ button{
 @media(min-width: 45em){
     /*Wider output and input size.*/
     .inputHolder{
-        width: 45rem;
+        width: 43rem;
     }
 
     .text-output{
+        width: 43rem;
+    }
+
+    .outside-container{
         width: 45rem;
     }
 }
