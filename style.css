@@ -53,6 +53,7 @@ body{
 /*Input text background-color.*/
 input{
     background-color: lightcyan;
+    padding-left: 0.25rem;
 }
 
 /*Below are holders for flex separation of buttons and input.*/
@@ -67,16 +68,17 @@ input{
 
 .inputHolder-left{
     display: flex;
-    margin: 0.24rem;
+    margin: 0.25rem 0;
 }
 .inputHolder-right{
     display: flex;
-    margin: 0.24rem;
+    margin: 0.25rem 0;
 }
 
 /*remove border from buttons and input.*/
 button, input{
     border: none;
+    font-weight: bold;
 }
 
 button{

@@ -6,7 +6,7 @@ let currentRoom = 1;
 /**@type {boolean}*/
 let gameOver = false;
 
-//Listens for Enter key press and triggers the enter button.
+//Listens for Enter key presses and triggers the Enter button.
 const inputTextElement = document.getElementById('inTextId');
 inputTextElement.addEventListener('keyup', function(event){
     if(event.keyCode === 13){
@@ -195,5 +195,5 @@ const rooms = [
     }
 ]
 
-//Starts game.
+//Starts the game.
 startGame();
