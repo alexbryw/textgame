@@ -79,19 +79,19 @@ function isGameOver(){
  *@typedef  {{ roomText: String, doorsToRooms: Array<Number>}} Room
  */
 
-/*
- * Array of room objects containing roomText string
- * and an array of available doorOptions to enter whit actionText string and nextRoom number.
- * @type {Array<Room>}
- */
-
- /**
-  * @typedef {roomText: String}
+ /** An array of room objects containing a string and another array of object containing a string and a number.
+  * @typedef {Array{roomText: String, doorOptions: Array{actionText: String, nextRoom: Number}}}
   */
 const rooms = [
     {   //0 You died.
         roomText:
         'You did not make it, you are dead. Game Over.',
+        doorOptions: [
+            {
+                actionText: "",
+                nextRoom: 0 
+            }
+        ]
     },
     {   //1 start.
         roomText:
@@ -166,10 +166,22 @@ const rooms = [
     {   //6 radiation dead.
         roomText:
         'You see green glowing goo on the ground, you feel to weak too walk, its radioactive. You died. Game Over.',
+        doorOptions: [
+            {
+                actionText: "",
+                nextRoom: 0 
+            }
+        ]
     },
     {   //7 blow up door Freedom win.
         roomText:
         'The explosives blow the door open, you see light coming trough the dust, you have found safe place in The Apocalypse. You Win! Game Over.',
+        doorOptions: [
+            {
+                actionText: "",
+                nextRoom: 0 
+            }
+        ]
     }
 ]
 

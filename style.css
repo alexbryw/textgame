@@ -40,9 +40,9 @@ body{
     width: 20rem;
 }
 
-/*Spacer between Enter and Reset button to stop accidental reset.*/
+/*Spacer between left side and input.*/
 .spacer{
-    width: 1rem;
+    width: 0.5rem;
 }
 
 /*Input text background-color.*/
