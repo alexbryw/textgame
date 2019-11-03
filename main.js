@@ -73,14 +73,14 @@ function goToRoom(userInput){
     }
     //error text if user inputs the wrong value.
     if (!doorOpened) {
-        addTextToOutput('That is not possible, try again.');
+        addTextToOutput('That does not work, try again.');
     }
 }
 /**
  * Sets gameOver to true if player reaches win or lose rooms.
  */
 function isGameOver(){
-    if(currentRoom == 0||currentRoom == 6||currentRoom == 7){
+    if(currentRoom == 0||currentRoom == 6||currentRoom == 7||currentRoom == 9){
         gameOver = true;
     }
 }
@@ -119,7 +119,7 @@ const rooms = [
     },
     {   //2 enter first room , ladder down or next door.
         roomText:
-        'You enter the building and the walls fall in and block the way back. You see a ladder leading down, and another door.<br>Climb down the <b>ladder</b> or open the next <b>door</b>.',
+        'You are in the entrance hall, the way out is blocked. You see a ladder leading down, and another door.<br>Climb down the <b>ladder</b> or open the next <b>door</b>.',
         doorOptions: [
             {
                 actionText: "ladder",
@@ -133,7 +133,7 @@ const rooms = [
     },
     {   //3 down the ladder , keep going or return.
         roomText:
-        'You climb down and you see a dead body, you feel sick. Do you <b>go back up</b> or <b>keep going</b>.',
+        'You climb down and you see a dead body, you feel sick. The body has a note in its hand, it reads "PIN code: 5498." Do you <b>go back up</b> or <b>keep going</b>.',
         doorOptions: [
             {
                 actionText: "go back up",
@@ -147,7 +147,7 @@ const rooms = [
     },
     {   //4 next door or return.
         roomText:
-        'You open the door and see a metal object on the floor and a blocked door. Do you <b>go back</b> or <b>pick up</b> the metal object.',
+        'You open the door and see a metal object on the floor, a blocked door and a vault door whit a keypad. Do you <b>go back</b> or <b>pick up</b> the metal object or go to the <b>vault</b> door.',
         doorOptions: [
             {
                 actionText: "go back",
@@ -156,6 +156,10 @@ const rooms = [
             {
                 actionText: "pick up",
                 nextRoom: 5 
+            },
+            {
+                actionText: "vault",
+                nextRoom: 8 
             }
         ]
     },
@@ -175,7 +179,7 @@ const rooms = [
     },
     {   //6 radiation dead.
         roomText:
-        'You see green glowing goo on the ground, you feel to weak too walk, its radioactive. You died. Game Over.',
+        'You see green glowing goo on the ground, it’s radioactive. You feel too weak too walk, you collapse but try to crawl back. There are now two bodies by the ladder. You died. Game Over.',
         doorOptions: [
             {
                 actionText: "",
@@ -183,9 +187,33 @@ const rooms = [
             }
         ]
     },
-    {   //7 blow up door Freedom win.
+    {   //7 blow up door win.
         roomText:
-        'The explosives blow the door open, you see light coming trough the dust, you have found safe place in The Apocalypse. You Win! Game Over.',
+        'The explosives blow the door open, you see light coming trough the dust, you have found a safe place in The Apocalypse. You Win! Game Over.',
+        doorOptions: [
+            {
+                actionText: "",
+                nextRoom: 0 
+            }
+        ]
+    },
+    {   //8 vault keypad.
+        roomText:
+        'You see a keypad on the vault door, do you enter a <i>four digit PIN code</i>, or <b>go back</b>.',
+        doorOptions: [
+            {
+                actionText: "go back",
+                nextRoom: 4 
+            },
+            {
+                actionText: "5498",
+                nextRoom: 9 
+            }
+        ]
+    },
+    {   //9 vault keypad win.
+        roomText:
+        'The keypad light up and you hear large metal cogs grinding. The vault door opens up, you have found a safe place in The Apocalypse. You Win! Game Over.',
         doorOptions: [
             {
                 actionText: "",
