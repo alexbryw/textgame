@@ -1,4 +1,4 @@
-#The Apocalypse Game.
+####The Apocalypse Game.
 -The world has ended , where do you go?
 
 A text based computer adventure in html css and javascript.
