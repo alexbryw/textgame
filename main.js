@@ -11,15 +11,19 @@ let currentRoom = 1;
 */
 let gameOver = false;
 
-//Listens for Enter key presses and triggers the Enter button.
+
+/**
+ * HTML element for text input used in eventListener.
+ * @type {HTMLElement}
+ */
 const inputTextElement = document.getElementById('inTextId');
+//Listens for Enter key presses and triggers the Enter button.
 inputTextElement.addEventListener('keyup', function(event){
     if(event.keyCode === 13){
         event.preventDefault();
         document.getElementById('button-input').click();
     }
 })
-
 
 /**
  * Is run at start and on reset.
