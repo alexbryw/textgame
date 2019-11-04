@@ -1,4 +1,4 @@
-####The Apocalypse Game.
+###The Apocalypse Game.
 -The world has ended , where do you go?
 
 A text based computer adventure in html css and javascript.
@@ -8,6 +8,7 @@ The text is sent to a function that looks for available paths from the current r
 and displays text from the next room that was chosen.
 
 Alexander B.
+
 Github pages: https://alexbryw.github.io/textgame/
 
 Github repo: https://github.com/alexbryw/textgame
