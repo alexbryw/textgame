@@ -1,9 +1,14 @@
 
-/** Keeps track of current room position.
- * @type {number}*/
+/**
+ * Keeps track of current room position.
+ * @type {number}
+ **/
 let currentRoom = 1;
 
-/**@type {boolean}*/
+/**
+ * Keeps track of if game is over.
+ * @type {boolean}
+*/
 let gameOver = false;
 
 //Listens for Enter key presses and triggers the Enter button.
@@ -85,12 +90,19 @@ function isGameOver(){
     }
 }
 
-/*
- *@typedef  {{ roomText: String, doorsToRooms: Array<Number>}} Room
+/**
+ * An object Room containing a string roomText and an array of Door objects.
+ * @typedef  {{ roomText: String, doorOptions: Array<Door> }} Room
  */
 
- /** An array of room objects containing a string and another array of object containing a string and a number.
-  * @typedef {Array{roomText: String, doorOptions: Array{actionText: String, nextRoom: Number}}}
+/**
+ * An object Door containing a string actionText and a number in nextRoom.
+ * @typedef {{ actionText: String, nextRoom: Number }} Door
+ */
+
+ /**
+  * An array of Room objects.
+  * @type {Array<Room>}
   */
 const rooms = [
     {   //0 You died.
